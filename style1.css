@@ -1,0 +1,378 @@
+/* ====== Stili bazë për të gjitha faqet ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background: #fdf6e3; /* ngjyrë neutrale për restorant */
+  color: #333;
+  line-height: 1.6;
+}
+
+header, main, footer {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+}
+
+/* ====== Header dhe nav ====== */
+header {
+  text-align: center;
+  background: linear-gradient(90deg, #f5d4b3, #f2a65a);
+}
+
+header h1 {
+  margin-bottom: 10px;
+  color: #8b4d2b;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  background: #fff3e3;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #f2a65a;
+  color: #fff;
+}
+
+/* ====== Tituj ====== */
+h2 {
+  text-align: center;
+  color: #8b4d2b;
+  margin-bottom: 20px;
+}
+
+/* ====== Menuja e restorantit ====== */
+.menu-container, .menu-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.menu-item {
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  background: #fff;
+  padding: 10px;
+}
+
+.menu-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+}
+
+/* ====== Forma e rezervimeve ====== */
+form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #f2a65a;
+  outline: none;
+  box-shadow: 0 0 6px rgba(242,166,90,0.5);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form button {
+  background: #f2a65a;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #d18c42;
+}
+
+/* ====== Kontakt ====== */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+  font-size: 18px;
+  text-align: center;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: #8bad;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.contact-links a:hover {
+  color: #f2a65a;
+}
+
+/* ====== Footer ====== */
+footer {
+  text-align: center;
+  background: #8b4d2b;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* ====== Lightbox për galeri/menu ====== */
+#album-lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+#album-lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+#album-lightbox span#album-lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ====== Tooltip për lightbox ====== */
+#album-tooltip {
+  color: #fff;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+/* ====== Sekcione të fshehura për single-page nav ====== */
+main section { display: none; }
+main section.active { display: block; }
+
+/* Shake kur s'ka më foto majtas/djathtas */
+@keyframes shakeLeft {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-20px); }
+  50%  { transform: translateX(10px); }
+  75%  { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes shakeRight {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(20px); }
+  50%  { transform: translateX(-10px); }
+  75%  { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-left {
+  animation: shakeLeft 0.5s ease;
+}
+
+.shake-right {
+  animation: shakeRight 0.5s ease;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+/* ========================
+   Lightbox Styling
+========================= */
+#album-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 9999;
+}
+
+#album-lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+#album-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#album-tooltip {
+  position: absolute;
+  bottom: 30px;
+  color: white;
+  font-size: 16px;
+  background: rgba(0,0,0,0.6);
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: opacity 0.5s ease;
+}
+
+/* ========================
+   Shake animations
+========================= */
+.shake-left {
+  animation: shakeLeft 0.4s;
+}
+
+.shake-right {
+  animation: shakeRight 0.4s;
+}
+
+@keyframes shakeLeft {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-15px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes shakeRight {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(15px); }
+  50% { transform: translateX(-10px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+/* ========================
+   Disable scroll when lightbox is open
+========================= */
+.no-scroll {
+  overflow: hidden;
+}
+/* Butoni kryefaqes */
+.btn-demo {
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, #f2a65a, #f5d4b3); /* gradient warm */
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-demo::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+
+
+#album-tooltip {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: swipeHint 1.5s ease forwards;
+}
+
+@keyframes swipeHint {
+  0%   { transform: translateX(-50%) translateX(-10px); opacity: 0; }
+  50%  { transform: translateX(-50%) translateX(10px); opacity: 1; }
+  100% { transform: translateX(-50%) translateX(0); opacity: 1; }
+}
+

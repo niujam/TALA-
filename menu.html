@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+  <header>
+    <h1>Menuja</h1>
+      <nav>
+    <a href="index2.html">Kryefaqja</a>
+    <a href="menu.html">Menu</a>
+    <a href="rezervim1.html">Rezervime</a>
+    <a href="kontakt1.html">Kontakt</a>
+  </nav>
+  </header>
+
+  <main>
+    <section id="menu" class="active">
+      <h2>Zgjedh gatimin</h2>
+      <div class="menu-container">
+        <div class="menu-item" data-album="gatim1">
+          <img src="dish6.jpeg" alt="Gatim 1">
+          <p>Gatim 1</p>
+        </div>
+        <div class="menu-item" data-album="gatim2">
+          <img src="dish2.jpeg" alt="Gatim 2">
+          <p>Gatim 2</p>
+        </div>
+        <div class="menu-item" data-album="gatim3" >
+          <img src="dish3.jpeg" alt="Gatim 3">
+          <p>Gatim 3</p>
+        </div>
+        <div class="menu-item" data-album="gatim4">
+          <img src="dish4.jpeg" alt="Gatim 4">
+          <p>Gatim 4</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox (jashtë main, por brenda body) -->
+  <div id="album-lightbox">
+    <span id="album-lightbox-close">✖</span>
+    <img id="album-lightbox-img" src="" alt="Album">
+
+    
+  </div>
+  <div id="album-container" style="position: relative; display: inline-block;">
+  <img id="album-img" src="portofolio/restorant/dish61.jpeg" alt="Foto">
+  <span id="album-tooltip">Rrëshqit majtas ose djathtas</span>
+</div>
+  
+<footer>
+  <p>© 2025 Restorant Demo</p>
+</footer>
+  <script src="script1.js"></script>
+</body>
+</html>
