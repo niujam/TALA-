@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olida BEAUTY</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  background: url('pictures1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+
+header, main section, footer {
+  margin: 20px auto;
+  max-width: 1000px;
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(255,255,255,0.5);
+}
+
+header {
+  background: linear-gradient(90deg, #f7d9e3, #ffd1a4);
+  text-align: center;
+  padding: 10px 0;
+}
+
+header h1 {
+  margin: 0;
+  color: #a0527c;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  background: #fff3f7;
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: #ffd1a4;
+  color: #000;
+}
+
+h2 {
+  text-align: center;
+  color: #a0527c;
+  margin-bottom: 20px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.service-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-btn:hover {
+  background: #ffd1a4;
+  transform: scale(1.05);
+}
+
+.service-btn img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #eee;
+}
+
+/* Rezervimi me box shadow dhe sfond tejdukshëm */
+#rezervim {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#rezervim form {
+  background: rgba(255,255,255,0.3);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+#rezervim input, #rezervim select, #rezervim textarea, #rezervim button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px  #ccc;
+  font-weight: normal;
+}
+
+#rezervim button {
+  background: #25D366;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+#rezervim button:hover {
+  background: #1DA851;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+footer {
+  background: #a0527c;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: #ffd1a4;
+  text-decoration: none;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Olida <b>BEAUTY</b></h1>
+  <p>✨ Zbulo versionin më të bukur të vetes ✨</p>
+  <p>Çdo ditë 07:00 – 19:00</p>
+  <nav>
+    <a href="#home">Kryefaqja</a>
+    <a href="#about">Rreth Nesh</a>
+    <a href="#services">Shërbimet</a>
+    <a href="#rezervim">Rezervime</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+<section id="home">
+  <h2>Kryefaqja</h2>
+  <p>Makeup • Flokët • Qerpikë • Thonj • Depilim — shërbime të personalizuara me prekje luksi. Rezervo online në pak sekonda.</p>
+</section>
+
+<section id="about">
+  <h2>Rreth Nesh</h2>
+  <div class="card">
+    <p>💖 Kujdes, elegancë & detaj</p>
+    <p>Tek <b>Olida BEAUTY</b> besojmë se bukuria është art. Ekipi ynë ofron shërbime të personalizuara për çdo klient, me produkte cilësore dhe standarde të larta higjiene. Qëllimi ynë është të largoheni gjithmonë të buzëqeshur.</p>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Shërbimet</h2>
+  <div class="services">
+    <div class="service-btn" data-num="+355676463829" data-name="Makeup">
+      <img src="https://via.placeholder.com/300x150" alt="Makeup">
+      💄 Makeup
+    </div>
+    <div class="service-btn" data-num="+355676463829" data-name="Thonj">
+      <img src="https://via.placeholder.com/300x150" alt="Thonj">
+      💅 Thonj
+    </div>
+    <div class="service-btn" data-num="+355676463829" data-name="Depilim">
+      <img src="https://via.placeholder.com/300x150" alt="Depilim">
+      ✨ Depilim
+    </div>
+    <div class="service-btn" data-num="+355683759422" data-name="Flokët">
+      <img src="https://via.placeholder.com/300x150" alt="Flokët">
+      💇‍♀️ Flokët
+    </div>
+    <div class="service-btn" data-num="+355683759422" data-name="Qerpikë">
+      <img src="https://via.placeholder.com/300x150" alt="Qerpikë">
+      👁️ Qerpikë
+    </div>
+  </div>
+</section>
+
+<section id="rezervim">
+  <h2>Rezervim Online</h2>
+  <form id="formRezervim">
+    <input type="text" id="emri" placeholder="Emri juaj" required>
+    <input type="text" id="mbiemri" placeholder="Mbiemri juaj" required>
+    <select id="sherbimi" required>
+      <option value="">-- Zgjidh shërbimin --</option>
+      <option value="Makeup">Makeup</option>
+      <option value="Thonj">Thonj</option>
+      <option value="Depilim">Depilim</option>
+      <option value="Flokët">Flokët</option>
+      <option value="Qerpikë">Qerpikë</option>
+    </select>
+    <input type="date" id="data" required>
+    <textarea id="mesazhi" placeholder="Mesazhi juaj"></textarea>
+    <button type="submit">Dërgo në WhatsApp</button>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Kontakti</h2>
+  <p>📞 <a href="tel:+355676463829">+355 67 646 3829</a></p>
+  <p>📞 <a href="tel:+355683759422">+355 68 375 9422</a></p>
+</section>
+
+</main>
+
+<footer>
+  <p>Olida <b>BEAUTY</b> © Të gjitha të drejtat e rezervuara.</p>
+</footer>
+
+<script>
+const form = document.getElementById('formRezervim');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const emri = document.getElementById('emri').value;
+  const mbiemri = document.getElementById('mbiemri').value;
+  const sherbimi = document.getElementById('sherbimi').value;
+  const data = document.getElementById('data').value;
+  const mesazhi = document.getElementById('mesazhi').value;
+
+  let num = "";
+  const buttons = document.querySelectorAll('.service-btn');
+  buttons.forEach(btn => {
+    if(btn.dataset.name === sherbimi){
+      num = btn.dataset.num;
+    }
+  });
+
+  const text = `Emri: ${emri}%0AMbiemri: ${mbiemri}%0ASherbimi: ${sherbimi}%0AData: ${data}%0AMesazhi: ${mesazhi}`;
+  const url = `https://wa.me/${num.replace('+','')}?text=${text}`;
+  window.open(url, '_blank');
+});
+</script>
+
+</body>
+</html>
