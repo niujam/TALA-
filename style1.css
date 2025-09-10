@@ -209,11 +209,7 @@ footer {
 }
 
 /* ====== Tooltip për lightbox ====== */
-#album-tooltip {
-  color: #fff;
-  margin-top: 15px;
-  font-size: 16px;
-}
+
 
 /* ====== Sekcione të fshehura për single-page nav ====== */
 main section { display: none; }
@@ -236,13 +232,7 @@ main section.active { display: block; }
   100% { transform: translateX(0); }
 }
 
-.shake-left {
-  animation: shakeLeft 0.5s ease;
-}
 
-.shake-right {
-  animation: shakeRight 0.5s ease;
-}
 .no-scroll {
   overflow: hidden;
   height: 100vh;
@@ -283,16 +273,7 @@ main section.active { display: block; }
   font-weight: bold;
 }
 
-#album-tooltip {
-  position: absolute;
-  bottom: 30px;
-  color: white;
-  font-size: 16px;
-  background: rgba(0,0,0,0.6);
-  padding: 8px 15px;
-  border-radius: 8px;
-  transition: opacity 0.5s ease;
-}
+
 
 /* ========================
    Shake animations
@@ -306,27 +287,11 @@ main section.active { display: block; }
 }
 
 @keyframes shakeLeft {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-15px); }
-  50% { transform: translateX(10px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes shakeRight {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(15px); }
-  50% { transform: translateX(-10px); }
-  75% { transform: translateX(5px); }
-  100% { transform: translateX(0); }
-}
 
 /* ========================
    Disable scroll when lightbox is open
 ========================= */
-.no-scroll {
-  overflow: hidden;
-}
+
 /* Butoni kryefaqes */
 .btn-demo {
   display: inline-block;
@@ -355,20 +320,22 @@ main section.active { display: block; }
 }
 
 
-
 #album-tooltip {
   position: absolute;
-  top: 10px;
+  top: 130px; /* lart mbi foton */
   left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  font-size: 13px;
+  transform: translateX(-50%); /* gjithmonë qendër */
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: bold;
-  opacity: 0;
   white-space: nowrap;
-  pointer-events: none;
-  animation: swipeHint 1.5s ease forwards;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
+
 
 @keyframes swipeHint {
   0%   { transform: translateX(-50%) translateX(-10px); opacity: 0; }
