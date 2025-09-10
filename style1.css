@@ -208,7 +208,7 @@ footer {
   cursor: pointer;
 }
 
-/* ====== Tooltip për lightbox ====== */
+
 
 
 /* ====== Sekcione të fshehura për single-page nav ====== */
@@ -286,7 +286,6 @@ main section.active { display: block; }
   animation: shakeRight 0.4s;
 }
 
-@keyframes shakeLeft {
 
 /* ========================
    Disable scroll when lightbox is open
