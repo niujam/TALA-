@@ -1,35 +1,103 @@
 <!DOCTYPE html>
 <html lang="sq">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt - BEAUTY Salon Demo</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakti - Kompania e Ndërtimit</title>
+  <link rel="stylesheet" href="style3.css">
+  <!-- Firebase App (core SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-<header>
-<h1>BEAUTY <b>Salon</b> (Demo)</h1>
-<nav>
-<a href="index1.html">Kryefaqja</a>
-<a href="about.html">Rreth Nesh</a>
-<a href="services.html">Shërbimet</a>
-<a href="rezervim.html">Rezervime</a>
-<a href="contact.html">Kontakt</a>
-</nav>
-</header>
+  <header>
+    <h1>Kompania e Ndërtimit</h1>
+    <button class="menu-toggle" >☰</button>
+    <nav>
+      <ul>
+        <li><a href="index4.html">Kryefaqja</a></li>
+        <li><a href="about.html">Rreth Nesh</a></li>
+        <li><a href="services.html">Shërbimet</a></li>
+        <li><a href="contact.html" class="active">Kontakti</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-<h2>Kontakt (Demo)</h2>
-<div class="contact-links">
-  <a href="tel:+0000000000">📞 +000 000 0000</a>
-  <a href="mailto:demo@example.com">📧 demo@example.com</a>
-  <a href="https://www.google.com/maps?q=Adresë+shembull" target="_blank">📍 Adresë shembull</a>
-  <a href="https://instagram.com/demo_instagram/" target="_blank">@demo_instagram</a>
-</div>
-</main>
+  <main>
+    <h2>Na Kontaktoni</h2>
+    <form id="contactForm">
+      <label for="name">Emri:</label>
+      <input type="text" id="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+     
+      <label for="phone">Telefon:</label>
+      <input type="tel" id="phone" placeholder="+355 " required>
+      
+      <label for="message">Mesazhi:</label>
+      <textarea id="message" required></textarea>
+      
+      <button type="submit">Dërgo</button>
+    </form>
+    <p id="statusMessage"></p>
+  </main>
 
-<footer>
-<p>BEAUTY <b>Salon</b> © Demo</p>
-</footer>
+  <footer>
+    <p>© 2025 Kompania e Ndërtimit</p>
+  </footer>
+
+  <script>
+    // === Toggle Menu ===
+    
+
+    // === Firebase Config ===
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // === Form Submission ===
+    const contactForm = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('statusMessage');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      try {
+        await db.collection('contacts').add({
+          name,
+          email,
+          phone,
+          message,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+
+        statusMessage.textContent = "Mesazhi u dërgua me sukses!";
+        statusMessage.style.color = "green";
+
+        contactForm.reset();
+      } catch (error) {
+        console.error("Gabim në dërgimin e mesazhit:", error);
+        statusMessage.textContent = "Ndodhi një gabim, provoni përsëri.";
+        statusMessage.style.color = "red";
+      }
+    });
+  </script>
+  <script src="script3.js"></script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lyerje</title>
+  <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+<header>
+  <h1>Lyerje</h1>
+  <button class="menu-toggle">☰</button>
+   <nav>
+    <ul>
+       <li><a href="index4.html">Kryefaqja</a></li>
+      <li><a href="ndertim.html">Ndertim</a></li>
+      <li><a href="rikonstruksione.html" >Rikonstruksione</a></li>
+      <li><a href="gips.html">Punime Gipsi</a></li>
+      <li><a href="lyerje.html" class="active">Lyerje</a></li>
+      <li><a href="kapanone.html">Kapanone</a></li>
+    </ul>
+  </nav> 
+</header>
+
+<main>
+  <section class="service-detail">
+    <h2>Shërbimi Lyerje me Boje</h2>
+    <p>Ne ofrojmë shërbim Lyerje për banesa, zyra dhe objekte të tjera, duke kombinuar cilësi dhe shpejtësi në çdo projekt.</p>
+<h2>Punime Lyerje</h2>
+<div class="gallery">
+<a href="#" class="lightbox-thumb" data-images="boj1.jpg,boj2.jpg,boj3.jpg,boj4.jpg">
+  <img src="boj1.jpg" alt="Lyerje">
+</a>
+</div>
+    <!-- Galeria do të mbushet nga Firebase -->
+    <div class="gallery" id="firebase-gallery-lyerje">
+      <!-- Fotot do të vendosen këtu me JavaScript nga Firebase -->
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Kompania e Ndërtimit</p>
+</footer>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+<!-- Skripti yt -->
+<script src="script3.js"></script>
+</body>
+</html>

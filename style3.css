@@ -1,0 +1,230 @@
+/* Reset bazik */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:Arial,sans-serif;line-height:1.6;background:#f4f4f4;color:#333;display:flex;flex-direction:column;min-height:100vh}
+
+/* Header */
+header{background:#222;color:#fff;padding:1rem;text-align:left;position:relative;justify-content:space-between;z-index:5}
+header h1{text-align:right}
+nav ul{list-style:none;display:flex;justify-content:center;margin-top:10px;transition:max-height .3s ease}
+nav ul li{margin:0 15px}
+nav ul li a{color:#fff;text-decoration:none}
+nav ul li a.active{font-weight:bold;border-bottom:2px solid yellow}
+
+/* Hero */
+.hero{background:url("photo0.jpg") no-repeat center/cover;color:black;text-align:center;padding:80px 20px;position:relative}
+.hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.2);z-index:1}
+.hero h2,.hero p,.hero .btn{position:relative;z-index:3}
+.hero .btn{display:inline-block;padding:12px 25px;margin-top:20px;background:yellow;color:#222;text-decoration:none;font-weight:bold;border-radius:8px;box-shadow:2px 2px 10px rgba(0,0,0,.3);transition:all .3s ease}
+.hero .btn:hover{background:#ffd700;transform:translateY(-2px);box-shadow:4px 4px 12px rgba(0,0,0,.4)}
+.hero .text-box{display:inline-block;padding:10px 20px;background:rgba(255,255,255,.15);border-radius:8px;text-align:center;box-shadow:0 0 15px rgba(255,255,255,.3)}
+.hero .text-box h2,.hero .text-box p{color:white;text-shadow:0 0 5px rgba(0,0,0,.5),0 0 10px rgba(0,0,0,.5),0 0 15px rgba(0,0,0,.3);font-weight:bold;margin:5px 0}
+
+/* Grid Gallery / Albume */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:20px}
+.gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .3s}
+.gallery img:hover{transform:scale(1.05)}
+
+/* Services Cards */
+.services-cards{text-align:center;padding:20px;background:#f9f9f9}
+.services-cards h2{font-size:2rem;margin-bottom:40px;color:#333}
+.cards-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.card .icon{font-size:2.5rem;margin-bottom:15px}
+.card h3{font-size:1.2rem;color:#444;margin-bottom:10px}
+.card p{color:#666;font-size:.95rem}
+
+/* Tiles për shërbime */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;padding:50px 20px;text-align:center}
+.tile{background:#222;color:#fff;padding:15px 5px;border-radius:10px;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;font-weight:bold;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.tile span{display:block;font-size:1.1rem;z-index:2;position:relative;margin-top:5px}
+.tile:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.tile::before{font-size:2rem;display:block;margin-bottom:8px;position:relative;z-index:2}
+
+/* Emoji për secilën tile */
+.tiles .tile:nth-child(1)::before{content:"🏗️"}
+.tiles .tile:nth-child(2)::before{content:"🧱"}
+.tiles .tile:nth-child(3)::before{content:"🔨"}
+.tiles .tile:nth-child(4)::before{content:"🎨"}
+.tiles .tile:nth-child(5)::before{content:"⚒️"}
+
+/* Form / Footer */
+form{max-width:600px;margin:20px auto;display:flex;flex-direction:column}
+form input,form textarea,form button{margin-bottom:10px;padding:10px;font-size:1rem}
+form button{background:#222;color:#fff;border:none;cursor:pointer}
+footer{background:#222;color:#fff;text-align:center;padding:15px;margin-top:auto;z-index:4}
+
+/* Hamburger menu toggle */
+.menu-toggle{display:none;position:absolute;top:15px;left:10px;background:lightyellow;border:button;color:black;font-size:2.3rem;cursor:pointer;z-index:5}
+@media(max-width:768px){nav ul{flex-direction:column;background:#222;max-height:0;overflow:hidden;transition:max-height .3s ease}nav ul.show{max-height:500px}.menu-toggle{display:block}}
+
+/* Lightbox CSS i thjeshtë (pa PhotoSwipe) */
+.lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);justify-content:center;align-items:center;z-index:9999}
+.lightbox img{max-width:90%;max-height:90%;border-radius:10px}
+.lightbox.active{display:flex}
+
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+.lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  user-select: none;
+  pointer-events: auto;
+  transition: transform 0.3s;
+}
+
+
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Imazhi në lightbox */
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+/* Butoni X */
+.lightbox .close {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  color: #fff;
+  font-size: 5rem;
+  cursor: ✖️;
+  user-select: none;
+  z-index: 10000;
+}
+
+/* Efekt vizual për swipe kur nuk ka foto tjetër */
+.lightbox img.swipe-effect {
+  transform: translateX(20px);
+}
+
+
+.lightbox .swipe-message {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  z-index: 10001;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Gallery container */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Miniaturat e fotove */
+.gallery img {
+  width: 100%;
+  height: auto; /* ose auto nëse preferon */
+  object-fit: cover; /* ruan raportin e fotos dhe e mbush thumbnail-in */
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Nëse do të bësh style specifik për linkun */
+.lightbox-thumb {
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+.lightbox-thumb img {
+  width: 100%;
+  height: 120px; /* ose sa duash */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+
+
+/* Miniatura si button qendror */
+.lightbox-thumb {
+  display: inline-block;
+  text-decoration: none;
+  margin: 20px auto; /* e qendron në mes */
+}
+
+.lightbox-thumb img {
+  width: 180px;      /* më i madh se miniatura normale */
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;   /* cepa të rrumbullakosur */
+  cursor: pointer;
+  border: 3px solid #ffd700;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* Efekti kur hover */
+.lightbox-thumb img:hover {
+  transform: translateY(-5px) scale(1.07);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  border-color: #ffea00;
+}
+
+/* Optional: një “label” poshtë miniaturës */
+.lightbox-thumb::after {
+  content: "Shiko Fotot";
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #222;
+  background: #ffd700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.lightbox-thumb:hover::after {
+  background: #ffea00;
+}
