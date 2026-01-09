@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (logo) {
         logo.onclick = () => {
             const kohaTani = Date.now();
-            if (kohaTani - kohaKlikimitTeFundit > 500) klikime = 0;
+            if (kohaTani - kohaKlikimitTeFundit > 200) klikime = 0;
             kohaKlikimitTeFundit = kohaTani;
             klikime++;
             if (klikime === 5) window.location.href = "hyrje.html";
