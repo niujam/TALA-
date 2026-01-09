@@ -1,0 +1,427 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Header Premium with Glassmorphism */
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+header h1 {
+  font-size: 3em;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px #667eea);
+  }
+  to {
+    filter: drop-shadow(0 0 20px #764ba2);
+  }
+}
+
+header p {
+  font-size: 1.2em;
+  color: #b8b8d1;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* WhatsApp Contact Button in Header */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+  position: relative;
+  z-index: 100;
+}
+
+.whatsapp-btn:hover {
+  background: linear-gradient(135deg, #128C7E, #25D366);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-btn i {
+  font-size: 1.3em;
+}
+
+/* Main Container */
+main {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 60px 0 40px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Skills Section Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.skill-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.skill-item i {
+  font-size: 3em;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skill-item span {
+  display: block;
+  font-size: 0.9em;
+  color: #b8b8d1;
+  margin-top: 8px;
+}
+
+/* Projects Container - Grid Layout */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Glassmorphism Project Cards */
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Glow Border Effect on Hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+}
+
+/* Project Image with Zoom Effect */
+.project-card-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.15);
+}
+
+/* Card Content */
+.project-card-content {
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.project-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.project-card p {
+  color: #b8b8d1;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Tech Stack Badges */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tech-badge {
+  background: rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(102, 126, 234, 0.4);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.75em;
+  color: #b8b8d1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.tech-badge i {
+  font-size: 1.1em;
+}
+
+/* Project Buttons Container */
+.project-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+/* Button Base Styles - FIXED FOR CLICKABILITY */
+.btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 0.9em;
+  position: relative;
+  z-index: 10;
+  pointer-events: all;
+}
+
+/* Live Preview Button - Gradient */
+.btn-preview {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-preview:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+/* View Code Button - Glass Effect */
+.btn-code {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-code:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Footer with Glassmorphism */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 60px;
+}
+
+footer p {
+  color: #b8b8d1;
+}
+
+footer a {
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+footer a:hover {
+  color: #764ba2 !important;
+  text-shadow: 0 0 10px rgba(118, 75, 162, 0.5);
+  transform: translateY(-2px);
+  display: inline-block;
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  .whatsapp-btn {
+    font-size: 0.9em;
+    padding: 10px 20px;
+  }
+
+  .section-title {
+    font-size: 1.8em;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+  }
+
+  .skill-item {
+    padding: 20px;
+  }
+
+  .skill-item i {
+    font-size: 2.5em;
+  }
+
+  .project-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  header {
+    padding: 40px 15px;
+  }
+
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  .whatsapp-btn {
+    font-size: 0.85em;
+    padding: 10px 18px;
+  }
+
+  main {
+    padding: 0 15px;
+  }
+
+  .section-title {
+    font-size: 1.5em;
+    margin: 40px 0 30px;
+  }
+
+  .project-card-content {
+    padding: 20px;
+  }
+
+  .project-card h3 {
+    font-size: 1.3em;
+  }
+}
+
+/* Ensure all links are clickable */
+a {
+  position: relative;
+  z-index: 10;
+}
+
+/* Fix for any overlay issues */
+.project-card * {
+  pointer-events: auto;
+}
