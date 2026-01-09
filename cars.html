@@ -1,0 +1,104 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Galeria e Makinave</title>  
+    <link rel="stylesheet" href="style5.css">  
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+ 
+</head>  
+<body>  
+<header>  
+<div class="logo"><h3>Galeria e Makinave</h3>  </div>
+    <nav>  
+        <a href="index5.html">Home</a>  
+        <a href="cars.html">Galeria e Makinave</a>  
+        <a href="about.html">Rreth Nesh</a>  
+    </nav>  
+</header>  <main>  
+
+<button id="logoutBtn" style="display:none;">Logout</button>
+    <!-- Shtimi i makinave vetem per Admin -->  
+     <section>  
+    <h2>Makina të disponueshme</h2>  
+    <div id="carGallery" class="gallery">
+      <p style="white; text-align:center; width:100%; font-size:18px;">
+        ⌛ Duke ngarkuar makinat, ju lutem prisni...
+    </p>
+    </div>  
+</section>
+   
+<section id="adminSection" style="display:none; border: 2px solid #c0392b; padding: 15px; margin-bottom: 20px;">
+    <h2>Shto një makinë (Admin)</h2>
+    <input type="text" id="carName" placeholder="Emri i makinës (psh. BMW M5)">
+    <input type="number" id="carPrice" placeholder="Çmimi (psh. 50)">
+    <input type="file" id="carFile" accept="image/*" multiple>
+    <div id="uploadProgressContainer" style="display:none; width:100%; background:#333; border-radius:10px; margin-bottom:10px;">
+    <div id="uploadProgressBar" style="width:0%; height:10px; background:#00ff88; border-radius:10px; transition: width 0.3s;"></div>
+</div>
+<p id="progressText" style="display:none; color:#00ff88; font-size:12px; margin-bottom:10px;">Duke ngarkuar: 0%</p>
+
+    <button type="button" onclick="addCar()">+ Shto Makinë</button>
+</section>
+
+
+</main>  <footer>  
+    <p>&copy; 2025 Makina me Qera</p>  
+</footer>
+<!-- RESERVATION MODAL -->
+
+
+<div id="reservationModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal">&times;</span>
+        <h2 id="modalCarName"></h2>
+        
+        <label>Data e fillimit:</label>
+        <input type="date" id="startDate" class="modal-input">
+
+        <label>Data e mbarimit:</label>
+        <input type="date" id="endDate" class="modal-input">
+
+        <p style="margin-top:15px; font-weight:bold;">
+            Ditë të zgjedhura: <span id="calculatedDays">0</span>
+        </p>
+
+<label>Emri dhe Mbiemri juaj:</label>
+<input type="text" id="fullName" placeholder="Shembull: Filan Fisteku" class="modal-input">
+
+<label>Numri juaj (me kod shteti):</label>
+<input type="tel" id="clientPhone" placeholder="+355 6X XXX XXXX" class="modal-input">
+
+        
+        <h3 id="totalPrice">Totali: €0</h3>
+        
+        <div class="modal-buttons">
+            <button id="confirmOrder">Konfirmo në Sistem</button>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div id="imageModal" class="image-modal" style="display:none;">
+    <span class="close-image" onclick="closeImageModal()">&times;</span>
+    
+    <div class="image-modal-content">
+        <img id="modalImg" src="" alt="Foto e Makinës">
+        
+        <div id="modalDotsContainer"></div>
+    </div>
+</div>
+
+
+<div id="custom-toast">Mesazhi u dërgua!</div>
+
+
+
+
+<script type="module" src="javascript5.js"></script>
+
+
+</body>
+</html>
