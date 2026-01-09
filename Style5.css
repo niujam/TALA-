@@ -549,3 +549,27 @@ border-radius: 50%:
 }
 .loader { display: none; margin-top: 10px; color: #666; }
 .back-link { display: block; margin-top: 15px; color: #888; text-decoration: none; font-size: 14px; }
+
+/* Rregullimi për menunë në telefon */
+nav {
+    display: flex;
+    flex-wrap: wrap; /* Lejon butonat të zbresin bukur nëse nuk nxënë */
+    justify-content: center;
+    gap: 10px; /* Shton hapësirë mes butonave që të mos ngjiten */
+    padding: 10px;
+}
+
+nav a {
+    white-space: nowrap; /* Ndalon tekstin të ndahet në dysh */
+    font-size: 14px; /* Zvogëlon pak shkrimin që të nxënë të gjithë */
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+/* Nëse ke një ekran shumë të vogël */
+@media (max-width: 360px) {
+    nav a {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}
