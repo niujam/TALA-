@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — MakinaMeQera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Style5.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f1117;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .login-card {
+      background: rgba(24,28,38,0.97);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      padding: 40px 32px 36px;
+      width: 92%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+
+    .login-icon {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .login-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0ccfb0;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .login-card input {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 11px;
+      color: #e4e6f0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.22s;
+    }
+    .login-card input:focus {
+      border-color: #0ccfb0;
+      box-shadow: 0 0 0 2px rgba(12,207,176,0.13);
+    }
+
+    #btnLogin {
+      width: 100%;
+      padding: 14px;
+      margin-top: 6px;
+      background: #0ccfb0;
+      color: #071410;
+      border: none;
+      border-radius: 11px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    #btnLogin:hover    { background: #09a892; }
+    #btnLogin:active   { transform: scale(0.97); }
+    #btnLogin:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    #loader {
+      display: none;
+      margin-top: 14px;
+      color: #7a8299;
+      font-size: 14px;
+    }
+
+    #errorMsg {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: rgba(232,69,69,0.1);
+      border: 1px solid rgba(232,69,69,0.3);
+      border-radius: 9px;
+      color: #f5a5a5;
+      font-size: 13px;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 18px;
+      color: #7a8299;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #0ccfb0; }
+  </style>
+</head>
+<body>
+
+<div class="login-card">
+  <div class="login-icon">🔒</div>
+  <h2>Admin Panel</h2>
+
+  <input type="email"    id="adminEmail" placeholder="Email adresa"  autocomplete="email">
+  <input type="password" id="adminPass"  placeholder="Fjalëkalimi"   autocomplete="current-password">
+
+  <button id="btnLogin">Hyr në Sistem</button>
+  <div id="loader">⏳ Duke verifikuar...</div>
+  <div id="errorMsg"></div>
+
+  <a href="index5.html" class="back-link">← Kthehu pas</a>
+</div>
+
+<script type="module">
+  import { initializeApp }                       from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  // ── Firebase config (i njëjtë me javascript5.js) ──────────────
+  const firebaseConfig = {
+    apiKey:            "AIzaSyDWWm5Io79yKkruWflnur0psqGo5JhCvlk",  // ← NGA CONSOLE
+  authDomain:        "makina-me-qera-8cec2.firebaseapp.com",
+  projectId:         "makina-me-qera-8cec2",
+  storageBucket:     "makina-me-qera-8cec2.firebasestorage.app",
+  messagingSenderId: "734985518754",
+  appId:             "1:734985518754:web:d095914cae047cd355e1fb"  // ← NGA CONSOLE
+};
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // ── Elementet ─────────────────────────────────────────────────
+  const btnLogin   = document.getElementById('btnLogin');
+  const emailInput = document.getElementById('adminEmail');
+  const passInput  = document.getElementById('adminPass');
+  const loader     = document.getElementById('loader');
+  const errorMsg   = document.getElementById('errorMsg');
+
+  // ── Funksioni i Login-it ───────────────────────────────────────
+  async function doLogin() {
+    const email = emailInput.value.trim();
+    const pass  = passInput.value;
+
+    // Validim bazë
+    if (!email || !pass) {
+      showError("⚠️ Plotëso email-in dhe fjalëkalimin!");
+      return;
+    }
+
+    // Loading state
+    btnLogin.disabled    = true;
+    btnLogin.textContent = "⏳ Duke hyrë...";
+    loader.style.display = 'block';
+    errorMsg.style.display = 'none';
+
+    try {
+      await signInWithEmailAndPassword(auth, email, pass);
+      // ✅ Login i suksesshëm → shko te cars.html (admin panel)
+      btnLogin.textContent = "✅ Hyrja u krye!";
+      loader.textContent   = "✅ Ridrejtim...";
+      setTimeout(() => {
+        window.location.href = 'cars.html';
+      }, 800);
+
+    } catch (err) {
+      console.error('Login error:', err.code);
+      btnLogin.disabled    = false;
+      btnLogin.textContent = "Hyr në Sistem";
+      loader.style.display = 'none';
+
+      // Mesazhe gabimi të kuptueshme
+      const msgs = {
+        'auth/user-not-found':      "❌ Nuk ekziston ky email.",
+        'auth/wrong-password':      "❌ Fjalëkalimi është i gabuar.",
+        'auth/invalid-email':       "❌ Email-i nuk është i vlefshëm.",
+        'auth/invalid-credential':  "❌ Email ose fjalëkalim i gabuar.",
+        'auth/too-many-requests':   "⚠️ Shumë tentativa. Provo pas pak minutash.",
+        'auth/network-request-failed': "❌ Problem me internetin. Kontrollo lidhjen.",
+        'auth/user-disabled':       "❌ Ky llogari është çaktivizuar.",
+      };
+      showError(msgs[err.code] || `❌ Gabim: ${err.message}`);
+    }
+  }
+
+  function showError(msg) {
+    errorMsg.innerHTML     = msg;
+    errorMsg.style.display = 'block';
+  }
+
+  // ── Events ────────────────────────────────────────────────────
+  btnLogin.addEventListener('click', doLogin);
+
+  // Enter key në çdo input
+  [emailInput, passInput].forEach(input => {
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin();
+    });
+  });
+</script>
+
+</body>
+</html>
