@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rreth Nesh — MakinaMeQera</title>
+  <link rel="stylesheet" href="Style5.css">
+  <style>
+    /* ── About-specific styles ── */
+    .about-hero {
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+    }
+    .about-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .about-hero h1 .accent { color: var(--accent); }
+    .about-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    /* Values grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      padding: 1rem 1.5rem 2rem;
+    }
+    .value-card {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-card);
+      padding: 1.6rem;
+      transition: transform 0.3s, border-color 0.3s;
+      animation: fadeUp 0.5s ease both;
+    }
+    .value-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(12,207,176,0.3);
+    }
+    .value-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .value-card h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .value-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Story section */
+    .story-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .story-section .section-label {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .story-section h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    .story-section p {
+      color: var(--text-muted);
+      font-size: 0.97rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    /* Stats row */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-card);
+      padding: 1.6rem;
+      margin: 0 1.5rem 2rem;
+      text-align: center;
+    }
+    .about-stat .num {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .about-stat .lbl {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Contact card */
+    .contact-strip {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-card);
+      margin: 0 1.5rem 3rem;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .contact-strip .contact-info h3 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .contact-strip .contact-info p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .contact-strip .contact-info a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact-strip .contact-info a:hover { text-decoration: underline; }
+    .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .about-stat .num { font-size: 1.4rem; }
+      .contact-strip { flex-direction: column; }
+      .contact-actions { width: 100%; }
+      .contact-actions .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ──────────────────────────────── -->
+<header>
+  <div class="logo" id="secretLogo">
+    <h3>🚗 <span>Makina</span>meQera</h3>
+  </div>
+  <div class="header-right">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()" title="Switch language">🇬🇧 EN</button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index5.html" data-key="navHome">🏠 Home</a>
+  <a href="cars.html" data-key="navCars">🚗 Galeria e Makinave</a>
+  <a href="about.html" class="active" data-key="navAbout">ℹ️ Rreth Nesh</a>
+</nav>
+
+<!-- ─── MAIN ─────────────────────────────────── -->
+<main>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="hero-tag" data-al="✦ Rreth Nesh" data-en="✦ About Us">✦ Rreth Nesh</div>
+    <h1>
+      <span data-al="Kompania me" data-en="A Company Built on">Kompania me</span>
+      <span class="accent" data-al="Besim" data-en="Trust"> Besim</span><br>
+      <span data-al="dhe Traditë" data-en="and Tradition">dhe Traditë</span>
+    </h1>
+    <p data-al="Ofrojmë shërbim të kualitetit të lartë për makinat me qera, me çmime të arsyeshme dhe konfirmim të menjëhershëm."
+       data-en="We offer high-quality car rental services at reasonable prices with instant confirmation.">
+      Ofrojmë shërbim të kualitetit të lartë për makinat me qera, me çmime të arsyeshme dhe konfirmim të menjëhershëm.
+    </p>
+  </section>
+
+  <!-- Stats -->
+  <div class="about-stats">
+    <div class="about-stat">
+      <div class="num">50+</div>
+      <div class="lbl" data-al="Makina" data-en="Cars">Makina</div>
+    </div>
+    <div class="about-stat">
+      <div class="num">500+</div>
+      <div class="lbl" data-al="Klientë" data-en="Clients">Klientë</div>
+    </div>
+    <div class="about-stat">
+      <div class="num">24/7</div>
+      <div class="lbl" data-al="Support" data-en="Support">Support</div>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="story-section">
+    <div class="section-label" data-al="Historia jonë" data-en="Our Story">Historia jonë</div>
+    <h2 data-al="Kush jemi ne?" data-en="Who are we?">Kush jemi ne?</h2>
+    <p data-al="Jemi një kompani me eksperiencë në fushën e makinave me qera, e themeluar me një vizion të qartë: t'u ofrojmë klientëve tanë lëvizje të lirë, të sigurt dhe me kosto të arsyeshme."
+       data-en="We are an experienced car rental company founded with a clear vision: to offer our clients free, safe, and affordable mobility.">
+      Jemi një kompani me eksperiencë në fushën e makinave me qera, e themeluar me një vizion të qartë: 
+      t'u ofrojmë klientëve tanë lëvizje të lirë, të sigurt dhe me kosto të arsyeshme.
+    </p>
+    <p data-al="Flota jonë përfshin mbi 50 makina të llojeve dhe kategorive të ndryshme — nga automjete ekonomike për qytet deri te SUV-e komode për udhëtime të gjata. Çdo makinë kontrollohet rregullisht dhe mirëmbahet sipas standardeve më të larta të sigurisë."
+       data-en="Our fleet includes over 50 cars of various types and categories — from economical city cars to comfortable SUVs for long trips. Every car is regularly inspected and maintained to the highest safety standards.">
+      Flota jonë përfshin mbi 50 makina të llojeve dhe kategorive të ndryshme — nga automjete ekonomike 
+      për qytet deri te SUV-e komode për udhëtime të gjata. Çdo makinë kontrollohet rregullisht dhe mirëmbahet 
+      sipas standardeve më të larta të sigurisë.
+    </p>
+    <p data-al="Rezervimi bëhet online në sekonda, dhe çdo klient merr një Kod Konfirmimi unik për të ndjekur statusin e rezervimit të tij në çdo moment."
+       data-en="Booking is done online in seconds, and every client receives a unique Confirmation Code to track their reservation status at any time.">
+      Rezervimi bëhet online në sekonda, dhe çdo klient merr një <strong style="color:var(--accent)" data-al="Kod Konfirmimi" data-en="Confirmation Code">Kod Konfirmimi</strong> unik 
+      për të ndjekur statusin e rezervimit të tij në çdo moment.
+    </p>
+  </div>
+
+  <!-- Values -->
+  <div class="section-head" style="padding-top:0;">
+    <h2 data-al="Vlerat tona" data-en="Our Values">Vlerat tona</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card" style="animation-delay:0.0s">
+      <div class="icon">🛡️</div>
+      <h3 data-al="Siguri e Plotë" data-en="Full Safety">Siguri e Plotë</h3>
+      <p data-al="Çdo makinë inspektohet para dhe pas çdo rezervimi. Siguria juaj është prioriteti ynë i parë."
+         data-en="Every car is inspected before and after each booking. Your safety is our top priority.">Çdo makinë inspektohet para dhe pas çdo rezervimi. Siguria juaj është prioriteti ynë i parë.</p>
+    </div>
+    <div class="value-card" style="animation-delay:0.1s">
+      <div class="icon">⚡</div>
+      <h3 data-al="Konfirmim i Menjëhershëm" data-en="Instant Confirmation">Konfirmim i Menjëhershëm</h3>
+      <p data-al="Rezervimi juaj konfirmohet automatikisht dhe kodi i konfirmimit ju dërgohet në çast."
+         data-en="Your booking is confirmed automatically and the confirmation code is sent to you instantly.">Rezervimi juaj konfirmohet automatikisht dhe kodi i konfirmimit ju dërgohet në çast.</p>
+    </div>
+    <div class="value-card" style="animation-delay:0.2s">
+      <div class="icon">💰</div>
+      <h3 data-al="Çmime Transparente" data-en="Transparent Pricing">Çmime Transparente</h3>
+      <p data-al="Asnjë tarifë e fshehur. Paguani saktësisht çfarë shikoni — çmimi ditor × numri i ditëve."
+         data-en="No hidden fees. You pay exactly what you see — daily rate × number of days.">Asnjë tarifë e fshehur. Paguani saktësisht çfarë shikoni — çmimi ditor × numri i ditëve.</p>
+    </div>
+    <div class="value-card" style="animation-delay:0.3s">
+      <div class="icon">📱</div>
+      <h3 data-al="Support 24/7" data-en="24/7 Support">Support 24/7</h3>
+      <p data-al="Ekipi ynë është gjithmonë gati të ndihmojë — telefon, WhatsApp ose email."
+         data-en="Our team is always ready to help — phone, WhatsApp or email.">Ekipi ynë është gjithmonë gati të ndihmojë — telefon, WhatsApp ose email.</p>
+    </div>
+    <div class="value-card" style="animation-delay:0.4s">
+      <div class="icon">🗺️</div>
+      <h3 data-al="Mbulim Kombëtar" data-en="Nationwide Coverage">Mbulim Kombëtar</h3>
+      <p data-al="Shërbejme në të gjithë Shqipërinë. Makinën mund ta merrni dhe ta ktheni ku të dëshironi."
+         data-en="We serve all of Albania. You can pick up and return the car wherever you wish.">Shërbejme në të gjithë Shqipërinë. Makinën mund ta merrni dhe ta ktheni ku të dëshironi.</p>
+    </div>
+    <div class="value-card" style="animation-delay:0.5s">
+      <div class="icon">🔄</div>
+      <h3 data-al="Anulim Fleksibël" data-en="Flexible Cancellation">Anulim Fleksibël</h3>
+      <p data-al="Ndryshoni ose anuloni rezervimin tuaj lehtësisht, me njoftim minimal 24 orë përpara."
+         data-en="Easily change or cancel your booking with a minimum 24-hour notice.">Ndryshoni ose anuloni rezervimin tuaj lehtësisht, me njoftim minimal 24 orë përpara.</p>
+    </div>
+  </div>
+
+  <!-- Contact Strip -->
+  <div class="contact-strip">
+    <div class="contact-info">
+      <h3 data-al="📞 Na Kontaktoni" data-en="📞 Contact Us">📞 Na Kontaktoni</h3>
+      <p>
+        📱 <a href="tel:+355675841006">+355 67 584 1006</a><br>
+        💬 <a href="https://wa.me/355675841006" target="_blank">WhatsApp</a><br>
+        ✉️ <a href="/cdn-cgi/l/email-protection#b9d8cfd7d0d1d8cad88d89f9ded4d8d0d597dad6d4"><span class="__cf_email__" data-cfemail="365740585f5e574557020676515b575f5a1855595b">[email&#160;protected]</span></a>
+      </p>
+    </div>
+    <div class="contact-actions">
+      <a href="https://wa.me/355675841006" target="_blank" class="btn btn-primary">
+        💬 WhatsApp
+      </a>
+      <a href="cars.html" class="btn btn-ghost">
+        <span data-al="🚗 Shiko Makinat" data-en="🚗 View Cars">🚗 Shiko Makinat</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ─── FOOTER ────────────────────────────────── -->
+<footer>
+  <p>&copy; 2025 MakinaMeQera &nbsp;·&nbsp; Made with ❤️ in Albania</p>
+</footer>
+
+<!-- ─── SCRIPTS ───────────────────────────────── -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Language System ──────────────────────────────────────────
+  const ABOUT_STRINGS = {
+    al: { langBtn: "🇬🇧 EN", navHome: "🏠 Home", navCars: "🚗 Galeria e Makinave", navAbout: "ℹ️ Rreth Nesh" },
+    en: { langBtn: "🇦🇱 AL", navHome: "🏠 Home", navCars: "🚗 Car Gallery",         navAbout: "ℹ️ About Us"  }
+  };
+
+  let lang = localStorage.getItem('mmq_lang') || 'al';
+
+  function applyLanguage() {
+    const S = ABOUT_STRINGS[lang];
+    localStorage.setItem('mmq_lang', lang);
+
+    // Update lang button
+    const lb = document.getElementById('langBtn');
+    if (lb) lb.textContent = S.langBtn;
+
+    // Update all data-al / data-en elements
+    document.querySelectorAll('[data-al]').forEach(el => {
+      el.textContent = lang === 'al' ? el.dataset.al : (el.dataset.en || el.dataset.al);
+    });
+
+    // Update nav links
+    document.querySelectorAll('.nav-drawer a[data-key]').forEach(a => {
+      const v = S[a.dataset.key]; if (v) a.textContent = v;
+    });
+  }
+
+  window.toggleLang = function() {
+    lang = lang === 'al' ? 'en' : 'al';
+    applyLanguage();
+  };
+
+  // Apply on page load (respects saved language)
+  applyLanguage();
+
+  // ── Hamburger ────────────────────────────────────────────────
+  const hamburgerBtn  = document.getElementById('hamburgerBtn');
+  const navDrawer     = document.getElementById('navDrawer');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    navDrawer.classList.toggle('open');
+    drawerOverlay.classList.toggle('open');
+  });
+  drawerOverlay.addEventListener('click', () => {
+    hamburgerBtn.classList.remove('open');
+    navDrawer.classList.remove('open');
+    drawerOverlay.classList.remove('open');
+  });
+
+  // ── Secret Logo (5 taps → hyrje.html) ───────────────────────
+  let logoClicks = 0, logoTimer;
+  document.getElementById('secretLogo').addEventListener('click', () => {
+    logoClicks++;
+    clearTimeout(logoTimer);
+    logoTimer = setTimeout(() => { logoClicks = 0; }, 1800);
+    if (logoClicks >= 5) { logoClicks = 0; window.location.href = 'hyrje.html'; }
+  });
+</script>
