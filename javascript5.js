@@ -20,12 +20,12 @@ import { getStorage, ref as sRef,
 //      nga Firebase Console > Project Settings > Web App
 // ─────────────────────────────────────────────────────────────
 const firebaseConfig = {
-  apiKey:            "AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",  // ← NGA CONSOLE
+  apiKey:            "AIzaSyDWWm5Io79yKkruWflnur0psqGo5JhCvlk",  // ← NGA CONSOLE
   authDomain:        "makina-me-qera-8cec2.firebaseapp.com",
   projectId:         "makina-me-qera-8cec2",
-  storageBucket:     "makina-me-qera-8cec2.appspot.com",
-  messagingSenderId: "110414036682227109057",
-  appId:             "1:110414036682227109057:web:XXXXXXXXXXXXXXXXXX"  // ← NGA CONSOLE
+  storageBucket:     "makina-me-qera-8cec2.firebasestorage.app",
+  messagingSenderId: "734985518754",
+  appId:             "1:734985518754:web:d095914cae047cd355e1fb"  // ← NGA CONSOLE
 };
 
 const app     = initializeApp(firebaseConfig);
