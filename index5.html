@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Makina me Qera — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Style5.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <!-- Logo: 5 klikime → hyrje.html (admin) -->
+  <div class="logo" id="secretLogo">
+    <h3>🚗 <span>Makina</span>meQera</h3>
+  </div>
+
+  <div class="header-right">
+    <!-- AL / EN toggle with flags -->
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()" title="Switch language">🇬🇧 EN</button>
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Nav drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index5.html" class="active" data-key="navHome">🏠 Home</a>
+  <a href="cars.html"   data-key="navCars">🚗 Galeria e Makinave</a>
+  <a href="about.html"  data-key="navAbout">ℹ️ Rreth Nesh</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
+<main>
+  <section class="hero">
+
+    <!-- Tag pill -->
+    <div class="hero-tag">✦ Rent-a-Car Albania</div>
+
+    <!-- Heading -->
+    <h1>
+      <span data-al="Zgjidhni" data-en="Choose the">Zgjidhni</span>
+      <span class="accent" data-al="Makinën" data-en="Perfect">Makinën</span><br>
+      <span data-al="Perfekte Për Ju" data-en="Car For You">Perfekte Për Ju</span>
+    </h1>
+
+    <p data-al="Ofertë e gjerë makinash me çmime të arsyeshme. Rezervim i shpejtë, konfirmim i menjëhershëm."
+       data-en="Wide selection of cars at reasonable prices. Fast booking, instant confirmation.">
+      Ofertë e gjerë makinash me çmime të arsyeshme. Rezervim i shpejtë, konfirmim i menjëhershëm.
+    </p>
+
+    <!-- ── SEARCH BAR ── -->
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput"
+             data-placeholder-al="Kërko makinë (BMW, Mercedes...)"
+             data-placeholder-en="Search car (BMW, Mercedes...)"
+             placeholder="Kërko makinë (BMW, Mercedes...)">
+      <button id="searchBtn" class="search-btn"
+              data-al="Kërko" data-en="Search">Kërko</button>
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="hero-cta">
+      <a href="cars.html" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2">
+          <rect x="1" y="3" width="15" height="13"/>
+          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+        <span data-al="Shiko Makinat" data-en="View Cars">Shiko Makinat</span>
+      </a>
+      <a href="about.html" class="btn btn-ghost">
+        <span data-al="Rreth Nesh" data-en="About Us">Rreth Nesh</span>
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="num">50+</div>
+        <div class="lbl" data-al="Makina" data-en="Cars">Makina</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">24/7</div>
+        <div class="lbl" data-al="Support" data-en="Support">Support</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">100%</div>
+        <div class="lbl" data-al="Konfirmim" data-en="Confirmed">Konfirmim</div>
+      </div>
+    </div>
+
+    <!-- ── TRACK MY ORDER ── -->
+    <div class="track-section">
+      <h4 data-al="📦 Track My Order" data-en="📦 Track My Order">📦 Track My Order</h4>
+      <div class="track-row">
+        <input type="text" id="trackInput"
+               data-placeholder-al="Kodi i rezervimit (RENT-XXXX)"
+               data-placeholder-en="Booking code (RENT-XXXX)"
+               placeholder="Kodi i rezervimit (RENT-XXXX)"
+               maxlength="12">
+        <button class="btn btn-primary" style="white-space:nowrap;padding:12px 18px;"
+                onclick="trackOrder()">
+          <span data-al="Kërko" data-en="Search">Kërko</span>
+        </button>
+      </div>
+      <div id="trackResult"></div>
+    </div>
+
+  </section>
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p>&copy; 2025 MakinaMeQera &nbsp;·&nbsp; Made with ❤️ in Albania</p>
+</footer>
+
+<!-- Toast -->
+<div id="custom-toast"></div>
+
+<!-- ══════════════════════════════════════════
+     JS
+══════════════════════════════════════════ -->
+<script type="module" src="javascript5.js"></script>
+
+<!-- Update placeholders when language changes (after module loads) -->
+<script>
+  // Called by toggleLang() in the module after applyLanguage()
+  // We listen for a custom event fired from the module
+  document.addEventListener('mmq:lang', (e) => {
+    const l = e.detail;
+    document.querySelectorAll('[data-placeholder-al]').forEach(el => {
+      el.placeholder = l === 'al' ? el.dataset.placeholderAl : el.dataset.placeholderEn;
+    });
+  });
+</script>
+
+</body>
+</html>
